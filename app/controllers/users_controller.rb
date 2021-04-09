@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  before_action :require_user_logged_in, only: [:index, :show]
+  
   def index
     #User.order(id: :desc)で降順で一覧表示、page(params[:page]).per(20)で１ページにつき25件取得
     @users = User.order(id: :desc).page(params[:page]).per(20)

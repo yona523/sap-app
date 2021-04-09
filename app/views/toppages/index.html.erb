@@ -1,4 +1,10 @@
+<% if logged_in? %>
+  <div class="text-center">
+   <h1>Welcome to the Sap App</h1>
+  </div>
+<% else %>   
 <div class="text-center">
-  <h1>Welcome to the Microposts</h1>
+  <h1>Welcome to the Sap App</h1>
   <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
 </div>
+<% end %>
