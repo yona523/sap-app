@@ -1,6 +1,6 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Sap App</a>
+  <nav class="navbar navbar-expand-sm navbar-white bg-white">
+    <a class="navbar-brand text-dark" href="/">Sap App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,11 +8,11 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item"><a href="#" class="nav-link">投稿一覧</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">新規投稿</a></li>
-          <li clss="nav-item"><%= link_to 'ユーザー一覧', users_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to "投稿一覧", microposts_path, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to "新規投稿", new_micropost_path, class: 'nav-link text-dark' %></li>
+          <li clss="nav-item"><%= link_to 'ユーザー一覧', users_path, class: 'nav-link text-dark'%></li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+            <a href="#" class="nav-link dropdown-toggle text-dark" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
               <li class="dropdown-divider"></li>
@@ -27,3 +27,4 @@
     </div>
   </nav>
 </header>
+
