@@ -1,0 +1,9 @@
+<h3>フォローリスト</h3>
+<ul class="nav">
+  <li class="nav-item"><%= link_to 'フォロワー', followers_user_path(@user), class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to '過去の投稿', microposts_user_path(@user), class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to 'お気に入り', likes_user_path(@user), class: 'nav-link' %></li>
+</ul>
+<div class="col-sm-8">
+  <%= render 'users', users: @followings %>
+</div>

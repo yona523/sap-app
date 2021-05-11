@@ -1,0 +1,34 @@
+<h3><%= current_user.name %></h3>
+<ul class="nav">
+ <li class="nav-item"><%= link_to 'お気に入り', likes_user_path(@user), class: 'nav-link' %></li>
+  <li class"nav-item"><%= link_to 'フォロー', followings_user_path(@user), class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to 'フォロワー', followers_user_path(@user), class: 'nav-link' %></li>
+</ul>
+<div class="row">
+  <div class="col-sm-5 container">
+    <ul class="list-unstyled">
+  <% @microposts.each do |micropost| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <%= link_to micropost.user.name, user_path(micropost.user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
+        </div>
+        <div>
+          <p><%= micropost.content %></p>
+          <% if micropost.img? %>
+             <%= image_tag micropost.img.url %>
+          <% end %>
+        </div>
+        <div>
+          <% if current_user == micropost.user %>
+            <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+  </div>
+</div>
+
+

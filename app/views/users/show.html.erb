@@ -1,9 +1,13 @@
-<h3><%= @user.name %></h3>
-<img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
-    <ul class="nav nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">過去の投稿一覧<span class="badge badge-secondary"><%= @count_microposts %></span></a></li>
-      <li class="nav-item"><a href="#" class="nav-link">お気に入り</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">フォロー</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">フォロワー</a></li>
-    </ul>
-<%= render 'microposts/microposts', microposts: @microposts %>
+<div class="row">
+  <div class="col-sm-5 container">
+    <h3><%= @user.name %></h3>
+    <img class="rounded img-fluid " src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+    <%= render 'relationships/follow_button', user: @user %>
+  </div>
+</div>
+<ul class="nav nav-justified mb-3">
+  <li class="nav-item"><%= link_to '過去の投稿', microposts_user_path(@user), class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to 'お気に入り', likes_user_path(@user), class: 'nav-link' %></li>
+  <li class"nav-item"><%= link_to 'フォロー', followings_user_path(@user), class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to 'フォロワー', followers_user_path(@user), class: 'nav-link' %></li>
+</ul>

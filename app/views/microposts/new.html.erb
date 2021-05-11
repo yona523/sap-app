@@ -1,12 +1,15 @@
-<aside class="col-sm-4">
-  <%= form_with(model: @micropost, local: true) do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, class: 'form-control', rows: 5 %>
-    </div>
-      <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-    <div class="field">
-      <%= f.label :画像 %>
-      <%= f.file_field :img %>
-    </div>
-  <% end %>
-</aside>
+<div class="row">
+  <div class="col-sm-5  container">
+    <%= form_with(model: @micropost, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', rows: 5 %>
+      </div>
+      <div class="form-group">
+          <%= f.label :画像を選択 %>
+          <%= f.file_field :img %>
+      </div>
+      
+      <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+      <% end %>
+  </div>
+</div>

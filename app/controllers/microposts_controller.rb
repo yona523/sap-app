@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   
   def index
     if logged_in?
-      @microposts = current_user.microposts.order(id: :desc).page(params[:page])
+      @microposts = Micropost.all
     end
   end
 
@@ -14,8 +14,21 @@ class MicropostsController < ApplicationController
   end
 
   def edit
+    @micropost = Micropost.find(params[:id])
   end
-
+  
+  def update
+    @micropost = Micropost.find(params[:id])
+    
+    if @micropost.update(micropost_params)
+      flash[:success] = "投稿内容を編集しました"
+      redirect_to microposts_path
+    else
+      flash[:success] = "投稿内容を編集できませんでした"
+      render :edit
+    end
+  end
+    
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
