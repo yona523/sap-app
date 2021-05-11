@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   
   def index
     if logged_in?
-      @microposts = Micropost.all
+      @microposts = Micropost.all.order(created_at: :desc)
     end
   end
 
